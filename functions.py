@@ -6,6 +6,7 @@ def Exact_Search(file_name,file_type,directory):
        and possible directories that may contain 
        the file. returns the directory of the file 
        if found otherwise return None"""
+    
     if file_type != -1: #to make sure it is not a folder
         file_name = file_name+file_type 
     #to examine name and type at the same time

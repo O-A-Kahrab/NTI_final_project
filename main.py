@@ -101,13 +101,16 @@ while True: #make sure it is a valid directory
     else:
         print("Invalid directory")
 
+found_directories = []
 for directory in directories.split(sep="/"):
-    found_directory = Exact_Search(file_name,extention,directory)
+    if directory == None:
+        continue
+    found_directories.append( Exact_Search(file_name,extention,directory) ) 
 
-if found_directory == None:
+if found_directories == []:
     print("File not found")
 else:
-    print("The file was found at:\n\t",found_directory)
+    print("The file was found at:\n\t",found_directories)
 
 #we can add search history as .json file ot just .txt file
 #for json the searched name is the key and its content is a list of returned directories
