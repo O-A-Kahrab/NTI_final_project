@@ -1,10 +1,5 @@
 from functions import *
 import os
-file_name = input("Enter the exact name of the file: ") #target file
-
-
-extention = input("Enter the extention (enter -1 for folder): ")
-#n will be an index 
 file_extensions = [
     ".3gp",
     ".7z",
@@ -83,8 +78,17 @@ file_extensions = [
     ".yml",
     ".zip",
 ]
-#file_type = file_extensions[n - 1] #instead of if statments
-while True:
+
+file_name = input("Enter the exact name of the file: ") #target file
+
+while True: #make sure it is a valid extention
+    extention = input("Enter the extention (enter -1 for folder): ")
+    if extention == -1 or extention in file_extensions:
+        break
+    else:
+        print("Invalid extention")
+
+while True: #make sure it is a valid directory
     count = 0
     directories = input("Enter directories to search in (seperate them using slashes -/-): ") #list of directories
 
@@ -99,7 +103,7 @@ while True:
 
 for directory in directories.split(sep="/"):
     found_directory = Exact_Search(file_name,extention,directory)
-    
+
 if found_directory == None:
     print("File not found")
 else:
