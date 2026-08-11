@@ -79,7 +79,16 @@ file_extensions = [
     ".zip",
 ]
 
-file_name = input("Enter the exact name of the file: ") #target file
+invalid_name_char = ["\\","/",":",">","<","|",'"',"?","؟","*"]
+while True:
+    valid_flag = 1
+    file_name = input("Enter the exact name of the file: ") #target file
+    for char in file_name: #check for a valid file name
+        if char in invalid_name_char:
+            valid_flag = 0
+            print("File names can't have any of these charcters",invalid_name_char)
+    if valid_flag:
+        break
 
 while True: #make sure it is a valid extention
     extention = input("Enter the extention (enter -1 for folder): ")
@@ -102,10 +111,17 @@ while True: #make sure it is a valid directory
         print("Invalid directory")
 
 found_directories = []
-for directory in directories.split(sep="/"):
-    if directory == None:
-        continue
-    found_directories.append( Exact_Search(file_name,extention,directory) ) 
+Exact_Search_flag = input("Enter one for exact search and zero for advanced serach")
+if Exact_Search_flag == 1:
+    for directory in directories.split(sep="/"):
+        if directory == None:
+            continue
+        found_directories.append( Exact_file_Search(file_name,extention,directory) ) 
+elif Exact_Search_flag == 0:
+    for directory in directories.split(sep="/"):
+            if directory == None:
+                continue
+            found_directories.append( advanced_file_search(file_name,extention,directory) ) 
 
 if found_directories == []:
     print("File not found")

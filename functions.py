@@ -1,6 +1,6 @@
 import os
 
-def Exact_Search(file_name,file_type,directory):
+def Exact_file_Search(file_name,file_type,directory):
     """searches for a file with the exact name
        takes 3 arguments name of file, its type 
        and possible directories that may contain 
