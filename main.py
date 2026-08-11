@@ -111,12 +111,14 @@ while True: #make sure it is a valid directory
         print("Invalid directory")
 
 found_directories = []
-Exact_Search_flag = input("Enter one for exact search and zero for advanced serach")
+Exact_Search_flag = int(input("Enter one for exact search and zero for advanced serach: "))
+
 if Exact_Search_flag == 1:
     for directory in directories.split(sep="/"):
         if directory == None:
             continue
         found_directories.append( Exact_file_Search(file_name,extention,directory) ) 
+
 elif Exact_Search_flag == 0:
     for directory in directories.split(sep="/"):
             if directory == None:
@@ -130,3 +132,4 @@ else:
 
 #we can add search history as .json file ot just .txt file
 #for json the searched name is the key and its content is a list of returned directories
+
